@@ -1,0 +1,50 @@
+# terminal aliases
+
+# ======================
+# General Bash
+# ======================
+alias tlf="tail -f"
+alias ln='ln -v'
+alias mkdir='mkdir -p'
+alias ...='../..'
+alias l='ls -l'
+alias ll='ls -al'
+alias lh='ls -Alh'
+alias e="$EDITOR"
+alias v="$VISUAL"
+
+# ======================
+# Docker
+# ======================
+# Start the docker-machine and set env vars:
+# Replace 'dev2' with the name of your docker machine
+alias ddu='docker-machine start dev2 && eval $(docker-machine env dev2)'
+
+# Force remove all conatiners:
+alias drmc="docker rm -f $(docker ps -a | awk '{ if(NR==1){}else{print $1}}')"
+# Force remove all images:
+alias drmi="docker rmi -f $(docker images | awk '{if(NR==1){}else{print $3}}')"
+
+
+# ======================
+# Ruby General
+# ======================
+alias b="bundle"
+alias be="bundle exec"
+
+# ======================
+# Ruby Specs
+# ======================
+alias ber="bundle exec rspec"
+alias rber="rescue bundle exec rspec"
+  # requires rspec and tdd gems.
+  # Test drives a given ruby file, passes args to rspec.
+  # ex: td spec/controllers/sessions_controller.rb -f d --fail-fast
+alias td='function _td() { tdd -- "$@"; };_td'
+
+
+# ======================
+# Git
+# ======================
+alias gs="git status"
+
